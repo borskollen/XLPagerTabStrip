@@ -28,6 +28,11 @@ import Foundation
 
 // MARK: Protocols
 
+public protocol PagerTabClickDelegate {
+    
+    func onTabItemClick()
+}
+
 public protocol IndicatorInfoProvider {
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo

@@ -248,7 +248,9 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
     }
     
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        onTabItemClick(index: indexPath.item)
+        if let childController = viewControllers[indexPath.item] as? PagerTabClickDelegate {
+            childController.onTabItemClick()
+        }
         
         guard indexPath.item != currentIndex else { return }
         
@@ -268,10 +270,6 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
             }
         }
         moveToViewController(at: indexPath.item)
-    }
-    
-    open func onTabItemClick(index: Int) {
-        
     }
     
     // MARK: - UICollectionViewDataSource
